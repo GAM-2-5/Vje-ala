@@ -7,7 +7,8 @@ def vješala():
            ' nasumično odabranu riječ prije nego iskoristite'
            ' sve pokušaje. Sretno! ;)')
     time.sleep(1.0)
-    
+    print(' NAPOMENA: Program dupla slova kao što su LJ i NJ broji kao dva slova.')
+    time.sleep (1.0)
 #uvod u igru
     
     pokretanje=True
