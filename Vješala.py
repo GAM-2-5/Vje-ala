@@ -1,14 +1,13 @@
 import random
 import time
-
+import unicodedata
 def vješala():
 
     print('Dobrodošli u vješala! Trebate pogoditi'
            ' nasumično odabranu riječ prije nego iskoristite'
            ' sve pokušaje. Sretno! ;)')
     time.sleep(1.0)
-    print(' NAPOMENA: Program dupla slova kao što su LJ i NJ broji kao dva slova.')
-    time.sleep (1.0)
+    
 #uvod u igru
     
     pokretanje=True
@@ -32,8 +31,9 @@ def vješala():
 
         
         prikaz=['''
+                        ''','''
                
-                     _|_''','''
+                     ___''','''
                  
                       |
                       |
@@ -103,8 +103,11 @@ def vješala():
                 if not pokušaji.isalpha():#provjerava je li unos slovo
                     print('Nije unešeno slovo. Pokušajte ponovo.')
                     continue
-                elif len(pokušaji)>1:#provjerava je li unešeno samo 1 slovo
+                elif len(pokušaji)>1  and pokušaji!= 'lj' and pokušaji!= 'nj' and pokušaji!= 'dž':#provjerava je li unešeno samo 1 slovo
                     print('Uneseno je više od jednog slova. Pokušajte ponovo.')
+                    continue
+                elif pokušaji == 'q' or pokušaji == 'x' or pokušaji == 'y' or pokušaji == 'w':
+                    print('Uneseno slovo ne pripada hrvatskoj abecedi.')
                     continue
                 elif pokušaji in pogođena_slova:#provjerava je li to slovo već bilo 
                     print('Uneseno je ponovljeno slovo. Pokušajte ponovo.')
@@ -122,11 +125,11 @@ def vješala():
                 pokušaj -=1
                 print(prikaz[(len(prikaz)-1)-pokušaj])
         if '-'not in p_riječ:#igrač je pogodio odabranu riječ
-            print(('\n{} je bila odabrana riječ!').format(riječ))
+            print(('\nPOBJEDILI STE!Pogodili ste odabranu riječ tj. {}!').format(riječ))
         else:#petlja završava jer je igrač potrošio sve pokušaje
                   print(('\nIzgubili ste! Riječ je bila {}.').format(riječ))
                   
-        print('\Želite li igrati ponovo?')
+        print('Želite li igrati ponovo?')
 
         odgovor=input('> ').lower()
         if odgovor not in ('da'):
