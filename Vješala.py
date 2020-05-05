@@ -8,11 +8,11 @@ def vješala():
            ' sve pokušaje. Sretno! ;)')
     time.sleep(1.0)
     
-#uvod u igru
+
     
     pokretanje=True
     
-    while pokretanje:    #pokretanje potlje
+    while pokretanje:    
         riječ= "ri.txt"
         r = open(riječ)
 
@@ -23,11 +23,11 @@ def vješala():
         
         riječ=random.choice(riječi)
         pokušaji=None 
-        pogođena_slova=[] #lista pogođenih slova
+        pogođena_slova=[] 
         p_riječ=[]
         for slovo in riječ:
-          p_riječ.append('-') #nepogođena slova u riječi će zamijeniti crticom
-        rije=None #dodaje riječi u listu p_riječ
+          p_riječ.append('-') 
+        rije=None 
 
         
         prikaz=['''
@@ -96,20 +96,20 @@ def vješala():
 
             try:
                 pokušaji= str(input('\nIzaberite slovo' + '\n'))
-            except:#provjerava unos
+            except:
                 print('Unos je ne važeći. Pokušajte ponovo.')
                 continue
             else:
-                if not pokušaji.isalpha():#provjerava je li unos slovo
+                if not pokušaji.isalpha():
                     print('Nije unešeno slovo. Pokušajte ponovo.')
                     continue
-                elif len(pokušaji)>1  and pokušaji!= 'lj' and pokušaji!= 'nj' and pokušaji!= 'dž':#provjerava je li unešeno samo 1 slovo
+                elif len(pokušaji)>1  and pokušaji!= 'lj' and pokušaji!= 'nj' and pokušaji!= 'dž':
                     print('Uneseno je više od jednog slova. Pokušajte ponovo.')
                     continue
                 elif pokušaji == 'q' or pokušaji == 'x' or pokušaji == 'y' or pokušaji == 'w':
                     print('Uneseno slovo ne pripada hrvatskoj abecedi.')
                     continue
-                elif pokušaji in pogođena_slova:#provjerava je li to slovo već bilo 
+                elif pokušaji in pogođena_slova: 
                     print('Uneseno je ponovljeno slovo. Pokušajte ponovo.')
                     continue
                 else:
@@ -119,14 +119,14 @@ def vješala():
 
             for slovo in range(len(riječ)):
                 if pokušaji==riječ[slovo]:
-                    p_riječ[slovo]=pokušaji #zamjenjuje sva točno pogođena slova
+                    p_riječ[slovo]=pokušaji 
 
             if pokušaji not in riječ:
                 pokušaj -=1
                 print(prikaz[(len(prikaz)-1)-pokušaj])
-        if '-'not in p_riječ:#igrač je pogodio odabranu riječ
+        if '-'not in p_riječ:
             print(('\nPOBJEDILI STE!Pogodili ste odabranu riječ tj. {}!').format(riječ))
-        else:#petlja završava jer je igrač potrošio sve pokušaje
+        else:
                   print(('\nIzgubili ste! Riječ je bila {}.').format(riječ))
                   
         print('Želite li igrati ponovo?')
